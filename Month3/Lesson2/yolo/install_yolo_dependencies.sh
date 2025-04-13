@@ -32,13 +32,14 @@ python3.11 pip install virtualenv
 echo "Creating virtual environment 'yolo11_env'..."
 python3.11 -m venv yolo11_env
 
+
 # Step 5: Activate the virtual environment
 echo "Activating virtual environment..."
 source yolo11_env/bin/activate
 
 # Step 6: Install Ultralytics YOLO package with export dependencies
 echo "Installing Ultralytics YOLO package with export dependencies..."
-pip install ultralytics[export]
+pip install -r requirment.txt
 
 # Step 7: Deactivate the virtual environment
 echo "Deactivating virtual environment..."

@@ -12,7 +12,8 @@ you can install necessery libraries automaticly or manualy:
 1. automaticly
     Run yolo/install_yolo_dependencies.sh, this bash file will run all required libraies.
 
-    `sudo ./yolo/install_yolo_dependencies.sh`
+    `cd yolo/`
+    `sudo ./install_yolo_dependencies.sh`
 
     at the end you must see this:
 
@@ -27,13 +28,13 @@ you can install necessery libraries automaticly or manualy:
 
     2. Install Python3 and pip if not already installed
 
-        `sudo apt install -y python3`
+        `sudo apt install -y python3.11`
         `sudo apt install -y python3-pip`
         `pip3 install --upgrade pip`
 
     3. Install virtualenv to create isolated Python environments
 
-        `pip3 install virtualenv`
+        `python3.11 pip install virtualenv`
 
     4. Create a virtual environment named 'yolo11_env'
 
@@ -45,7 +46,7 @@ you can install necessery libraries automaticly or manualy:
 
     6. Install Ultralytics YOLO package with export dependencies
 
-        `pip install ultralytics[export]`
+        `pip install -r requirment.txt`
 
     7. Deactivate the virtual environment
 
