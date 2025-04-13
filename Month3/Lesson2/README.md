@@ -58,11 +58,13 @@ Same as Install step you can Run Example automaticly or manualy:
 1. automaticly
     Run yolo/ObjectDetection.sh, this bash file will Create model and run example of prediction on sample image 'Bus'.
 
-    `sudo ./yolo/ObjectDetection.sh`
+    `./ObjectDetection.sh`
 
         Output:
 
-
+    *You can put your images in samples directory and run this code:
+    `./ObjectDetection.sh $(pwd)/samples/image.jpg`
+    
 2. Manual:
     1. Activate the virtual environment
 
