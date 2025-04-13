@@ -37,13 +37,7 @@ echo "Activating virtual environment..."
 source tf_env/bin/activate
 
 # Step 6: Install TensorFlow Lite runtime
-pip install tflite-runtime
-
-# Step 7: Install OpenCV for image processing
-pip install opencv-python
-
-# Step 8: Install numpy for numerical operations
-pip install numpy
+pip install -r requirments.txt
 
 # Step 9: Deactivate the virtual environment
 echo "Deactivating virtual environment..."
