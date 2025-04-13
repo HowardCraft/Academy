@@ -85,7 +85,7 @@ Same as Install step you can Run Example automaticly or manualy:
 
 -- How to Run -- Same steps as yolo:
 
-1- Run  ` ./install_yolo_dependencies.sh`
+1- Run  ` ./install_tflite_dependencies.sh`
 
 2-  Activate your enviroment `source tf_env/bin/activate`
 
