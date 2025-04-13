@@ -1,6 +1,6 @@
 # import necessary libraries
 import argparse
-import tensorflow as tf
+import tflite_runtime.interpreter as tflite
 import numpy as np
 import cv2
 from utils import check_tf_version, load_labels, process_frame
@@ -18,7 +18,7 @@ parser.add_argument("--model", type=str, default="coco_ssd_mobilenet_v1_1.0_quan
                     help="Path to the .tflite model file.")
 parser.add_argument("--labels", type=str, default="coco_ssd_mobilenet_v1_1.0_quant_2018_06_29/labelmap.txt",
                     help="Path to the labelmap.txt file.")
-parser.add_argument("--image", type=str, default="image.jpg",
+parser.add_argument("--image", type=str, default="samples/image.jpg",
                     help="Path to the input image.")
 parser.add_argument("--video", type=str, help="Path to input video file")
 parser.add_argument("--threshold", type=float, default=0.5,
@@ -31,7 +31,7 @@ args = parser.parse_args()
 # -------------------------------------------------------
 # Load the TensorFlow Lite model and allocate tensors
 # -------------------------------------------------------
-interpreter = tf.lite.Interpreter(model_path=args.model)
+interpreter = tflite.Interpreter(model_path=args.model)
 interpreter.allocate_tensors()
 
 
@@ -63,7 +63,7 @@ if labels is None:
 # -------------------------------------------------------
 # Image interface
 # -------------------------------------------------------
-if args.image:
+if int(args.image)!=0:
     if args.video:
         raise ValueError("Please provide either an image or a video, not both.")
     
@@ -73,11 +73,7 @@ if args.image:
         raise FileNotFoundError(f"Image not found at {args.image}")
 
     image = process_frame(image, input_width, input_height, interpreter, input_details, output_details, labels, boxes_idx, classes_idx, scores_idx, args.threshold)
-    cv2.imshow("Object Detection", image)
-    cv2.imwrite(args.output, image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-
+    cv2.imwrite(args.output,image)
 # ----------------------------
 # Video Inference
 # ----------------------------
@@ -86,6 +82,16 @@ elif args.video is not None:
     cap = cv2.VideoCapture(args.video)
     if not cap.isOpened():
         raise FileNotFoundError(f"Video not found at {args.video}")
+    # Get properties from the input video
+    fps = cap.get(cv2.CAP_PROP_FPS)
+    frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    
+    # Define the codec and create VideoWriter object
+    # Here we use the 'XVID' codec; you can change this codec (e.g., to 'mp4v') if needed.
+    fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    output_filename = 'output.avi'
+    out = cv2.VideoWriter(output_filename, fourcc, fps, (frame_width, frame_height))
 
     while True:
         ret, frame = cap.read()
@@ -94,19 +100,16 @@ elif args.video is not None:
 
         # Process the frame for object detection
         image = process_frame(frame, input_width, input_height, interpreter, input_details, output_details, labels, boxes_idx, classes_idx, scores_idx, args.threshold)
+        # Write the processed frame to the output video
+        out.write(image)
 
-        # Display the output frame
-        cv2.imshow("Object Detection", image)
-
-        # Break the loop on 'q' key press
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-
+    out.release()
     cap.release()
-    cv2.destroyAllWindows()
 
 else:
     print("Please provide either --image or --video input.")
+
+
 
 
 
