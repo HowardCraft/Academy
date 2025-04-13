@@ -83,8 +83,19 @@ Same as Install step you can Run Example automaticly or manualy:
 
 ## TF lite
 
--- How to Run --
+-- How to Run -- Same steps as yolo:
 
+1- Run  ` ./install_yolo_dependencies.sh`
+
+2-  Activate your enviroment `source tf_env/bin/activate`
+
+3- Run `python3 tflite_oblect_detection.py` to do default image processing with `/samples/image.jpg`
+
+4- Run example for Image :
+        `python tflite_object_detection.py  --video=samples/image.jpg --VideoProcessing=False`
+
+5- Run example for video :
+        `python tflite_object_detection.py  --video=samples/video.mp4 --VideoProcessing=True`
 
 
 # FAQ
