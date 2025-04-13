@@ -60,7 +60,6 @@ Same as Install step you can Run Example automaticly or manualy:
 
     `./ObjectDetection.sh`
 
-        Output:
 
     *You can put your images in samples directory and run this code- you need to replace your file name with **image.jpg**:
     `./ObjectDetectionYours.sh $(pwd)/samples/image.jpg`
