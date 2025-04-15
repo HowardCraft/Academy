@@ -26,7 +26,7 @@ python3.11 pip install --upgrade pip
 
 # Step 3: Install virtualenv to create isolated Python environments
 echo "Installing virtualenv..."
-python3.11 pip install virtualenv
+sudo python3.11 pip install --break-system-packages virtualenv
 
 # Step 4: Create a virtual environment named 'yolo11_env'
 echo "Creating virtual environment 'yolo11_env'..."
