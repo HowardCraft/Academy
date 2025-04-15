@@ -138,7 +138,7 @@ if args.Live:
     picam2.start()
     
     # Variable to store the time when the previous frame was captured; for FPS calculation.
-    prev_time = time.time()
+    #  time.time()
     
     # Live processing loop: capture frames, run inference, and display results.
     while True:
