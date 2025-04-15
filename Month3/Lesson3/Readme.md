@@ -19,6 +19,9 @@ you need to install install.sh
 to test camera you need to run:
 
 libcamera-hello
+
+
+
 this line of code will bring up your camera for 5 seconds. Now Run this code to ensure PiCamera Depenceis are installed correctly
 
 'python3 piCameraTest.py'
