@@ -30,7 +30,7 @@ picam2 = Picamera2()
 #   - Set the output image size to 1024x1024 pixels.
 #   - Set the pixel format to "RGB888" (red, green, blue with 8 bits per channel).
 # These settings can be customized as needed.
-picam2.preview_configuration.main.size = (1024, 1024)
+picam2.preview_configuration.main.size = (1640, 1232)
 picam2.preview_configuration.main.format = "RGB888"
 
 # 'align()' adjusts the preview configuration based on the underlying sensor parameters.
@@ -52,6 +52,8 @@ while True:
     im = picam2.capture_array()
     
     # Display the captured frame in a window titled "Camera".
+    cv2.namedWindow("Camera",cv2.WINDOW_NORMAL)
+    cv2.resizeWindow("Camera", 800,600)
     cv2.imshow("Camera", im)
     
     # Wait 1 millisecond for a key press. If 'q' is pressed, break out of the loop.

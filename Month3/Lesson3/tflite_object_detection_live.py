@@ -126,8 +126,8 @@ if args.Live:
 
     # Set desired frame dimensions for capturing video.
     # Note: Adjust these dimensions based on your camera's capability.
-    frame_height = 480
-    frame_width = 320
+    frame_height = 1640
+    frame_width = 1232
     picam2.preview_configuration.main.size = (frame_height, frame_width)
     picam2.preview_configuration.main.format = "RGB888"
     
@@ -138,7 +138,7 @@ if args.Live:
     picam2.start()
     
     # Variable to store the time when the previous frame was captured; for FPS calculation.
-    #  time.time()
+    prev_time =time.time()
     
     # Live processing loop: capture frames, run inference, and display results.
     while True:
@@ -166,6 +166,9 @@ if args.Live:
                     1, (0, 255, 0), 2, cv2.LINE_AA)
         
         # Display the processed frame with detections and FPS overlay.
+        cv2.namedWindow("Camera",cv2.WINDOW_NORMAL)
+        cv2.resizeWindow("Camera", 800,600)
+
         cv2.imshow("Camera", image)
         
         # Exit loop when the user presses 'q'.

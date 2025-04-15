@@ -46,10 +46,10 @@ sudo apt install -y python3-picamera2
 # 3. Install TensorFlow Lite Runtime
 # -----------------------------------------
 # This package is used for running TensorFlow Lite models on resource-constrained devices.
-sudo pip install tflite-runtime
+sudo pip install --break-system-packages tflite-runtime
 
 # -----------------------------------------
 # 4. Install OpenCV Python Package
 # -----------------------------------------
 # OpenCV is used for image processing and computer vision tasks.
-sudo pip install opencv-python
+sudo pip install --break-system-packages opencv-python
