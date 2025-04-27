@@ -105,7 +105,7 @@ if __name__ == "__main__":
     if args.discord_action:
         print("💬 Discord action is enabled.")
         send_discord_message(args.message)
-        send_discord_image( args.image, caption="📷 Photo from Pi!"
+        send_discord_image( args.image, message="📷 Photo from Pi!"
                             if os.path.exists(args.image) else None)
     
 
