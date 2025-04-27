@@ -5,7 +5,9 @@ import argparse                    # For parsing command-line options and argume
 
 
 # Load config from file
-with open('config.json', 'r') as f:
+here = os.path.dirname(__file__)
+json_file = os.path.join(here,'config.json')
+with open(json_file, 'r') as f:
     config = json.load(f)
 
 # ------------- Discord Functions -------------
@@ -108,4 +110,3 @@ if __name__ == "__main__":
         send_discord_image( args.image, message="📷 Photo from Pi!"
                             if os.path.exists(args.image) else None)
     
-

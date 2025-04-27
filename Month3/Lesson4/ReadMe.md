@@ -96,6 +96,16 @@ python3 notify.py
 You must recive image and text messge in both Discord and Telegram
 
 
+# Security Cam:
+
+Run tflite_object_detection_live_security_cam.py 
+
+python3 tflite_object_detection_live_security_cam.py
+
+By default live camera is activated.
+New configuration are reusing codes from notify.py 
+
+
 ## 🙋‍♂️ Questions?
 
 Ask your instructor or search the Telegram/Discord API docs for more!

@@ -28,7 +28,7 @@ import tflite_runtime.interpreter as tflite  # TensorFlow Lite interpreter for r
 import numpy as np                 # For numerical operations and array handling
 import cv2                         # OpenCV for image processing and display
 from utils import check_tf_version, load_labels, process_frame, process_frame_live
-from server.notify import send_discord_message, send_discord_image, send_telegram_message, send_telegram_image
+from server.notify import send_telegram_image,send_discord_image,send_telegram_message
 import os                          # For file path handling
                                  # Custom utility functions:
                                  #   - check_tf_version: to adjust output indices based on TF version
@@ -86,10 +86,10 @@ parser.add_argument("--VideoProcessing", type=bool, default=False,
 # Boolean flag indicating live camera mode (if True, use Picamera2 for live inference).
 parser.add_argument("--Live", type=bool, default=True,
                    help="Set to True for live camera processing mode.")
-    parser.add_argument("--telegram_action", type=bool, default=True,
+parser.add_argument("--telegram_action", type=bool, default=True,
                         help="Action to perform with Telegram bot (send_message or send_image).")
     # Add an argument for the action to perform with the Discord webhook .
-    parser.add_argument("--discord_action", type=bool, default=True,
+parser.add_argument("--discord_action", type=bool, default=True,
                         help="Action to perform with Discord webhook (send_message or send_image).")
 
 # Parse the provided arguments.
@@ -201,16 +201,17 @@ if args.Live:
                 cv2.putText(frame, "Person Detected", (900, 60), cv2.FONT_HERSHEY_SIMPLEX,
                    2, (10, 30, 100), 5, cv2.LINE_AA)
                 print("person here in the room")
+                file_name_detect = 'detect.jpg'
+                detected_person = cv2.imwrite(file_name_detect,image)
                 if args.telegram_action:
                     print("📱 Telegram action is enabled.")
-                    send_telegram_message(args.message)
-                    send_telegram_image( args.image, caption="📷 Photo from Pi!"
-                                        if os.path.exists(args.image) else None)
+                    send_telegram_message("hi")
+                    send_telegram_image(file_name_detect, caption="📷 person here in the room!"
+                                        if os.path.exists(detected_person) else None)
                 if args.discord_action:
                     print("💬 Discord action is enabled.")
-                    send_discord_message(args.message)
-                    send_discord_image( args.image, message="📷 Photo from Pi!"
-                                        if os.path.exists(args.image) else None)
+                    send_discord_image(file_name_detect, message="📷person here in the room!")
+                time.sleep(1)
        else:
            print("detach the detection process")
            person_detect_start = False
@@ -258,7 +259,7 @@ elif not args.VideoProcessing:
    # Save the processed image to the specified output file.
    cv2.imwrite(args.output, image)
 
-
+ 
 # ----- c) Video File Processing Interface -----
 elif args.video is not None:
    # Open the video file using OpenCV's VideoCapture.
