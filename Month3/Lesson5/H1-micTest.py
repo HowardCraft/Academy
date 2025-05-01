@@ -38,7 +38,7 @@ def record_audio(duration, samplerate, channels):
 
 def main():
     # This allows users to pass various parameters to the script.
-   parser = argparse.ArgumentParser(description="Object Detection and Notification Script")
+   parser = argparse.ArgumentParser(description="Audio Script")
        # Add an telegram bot action argument.
    parser.add_argument("--telegram_action", type=bool, default=True,
                         help="Action to perform with Telegram bot (send_telegram_audio).")
