@@ -10,7 +10,8 @@ A minimal script to verify your USB microphone on Raspberry Pi:
 
 import sounddevice as sd
 import soundfile as sf
-
+import argparse 
+from server.notify import send_telegram_audio, send_discord_audio
 
 def list_input_devices():
    print("== Available audio INPUT devices ==")
@@ -36,38 +37,62 @@ def record_audio(duration, samplerate, channels):
 
 
 def main():
+    # This allows users to pass various parameters to the script.
+   parser = argparse.ArgumentParser(description="Object Detection and Notification Script")
+       # Add an telegram bot action argument.
+   parser.add_argument("--telegram_action", type=bool, default=True,
+                        help="Action to perform with Telegram bot (send_telegram_audio).")
+    # Add an argument for the action to perform with the Discord webhook .
+   parser.add_argument("--discord_action", type=bool, default=True,
+                        help="Action to perform with Discord webhook (send_discord_audio).")
+   parser.add_argument(
+        "--duration", "-d",
+        type=float,
+        default=5.0,
+        help="Recording duration in seconds (e.g. 5.0)"
+    )
+   parser.add_argument(
+        "--filename", "-o",
+        type=str,
+        default="test.wav",
+        help="Output WAV filename"
+    )
+   parser.add_argument(
+        "--samplerate", "-r",
+        type=int,
+        default=16000,
+        help="Sample rate in Hz (default: 16000)"
+    )
+   parser.add_argument(
+        "--channels", "-c",
+        type=int,
+        choices=[1, 2],
+        default=1,
+        help="Number of channels: 1=mono, 2=stereo"
+    )
+       # Parse the provided arguments.
+   args = parser.parse_args()
+   
    # 1) List your USB mic (and any others)
    list_input_devices()
 
-   # 3) Ask how many seconds to record
-   duration = float(input("Enter recording duration in seconds (e.g. 5): "))
-
-
-   # 4) output filename
-   filename = "test.wav"
-
-
-   # 5) Set audio parameters
-   SAMPLERATE = 16000   # 16 kHz is typical for speech
-   CHANNELS   = 1       # mono
-
-
    # 6) Do the recording
-   audio_data = record_audio(duration, SAMPLERATE, CHANNELS)
+   audio_data = record_audio(args.duration, args.SAMPLERATE, args.CHANNELS)
 
 
    # 7) Save to WAV
-   sf.write(filename, audio_data, SAMPLERATE)
-   print(f"Saved recording to '{filename}'\n")
+   sf.write(args.filename, audio_data, args.SAMPLERATE)
+   print(f"Saved recording to '{args.filename}'\n")
 
 
-   # # 8) (Optional) Playback
-   # if input("Play it back now? (y/N): ").lower().startswith('y'):
-   #     print("→ Playing back…")
-   #     data, fs = sf.read(filename, dtype='int16')
-   #     sd.play(data, fs)
-   #     sd.wait()
-   #     print("→ Playback finished.")
+   # # 8) (Optional) Send to Telegram
+   if args.telegram_action:
+         send_telegram_audio(args.filename, caption="Audio recording")
+         print("Telegram action triggered.") 
+   # # 9) (Optional) Send to Discord
+   if args.discord_action:
+         send_discord_audio(args.filename, caption="Audio recording")
+         print("Discord action triggered.")
 
 
 if __name__ == "__main__":
