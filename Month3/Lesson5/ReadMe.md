@@ -34,6 +34,9 @@ chmod +x installRequirement.sh
 
 ## Hands-On Tasks
 
+First step is to activte virtualenv:
+`source vf_env/bin/activate`
+
 ### 1. Microphone Test (`H1-micTest.py`)
 
 Verify that your microphone is properly detected and can record audio.
@@ -47,7 +50,7 @@ Verify that your microphone is properly detected and can record audio.
 **Run:**
 
 ```bash
-python H1-micTest.py --duration 3 --output mic_test.wav
+python H1-micTest.py --duration 5 --filename test.wav
 
 
 
@@ -64,7 +67,7 @@ Capture live audio from your microphone and convert it to text.
 **Run:**
 
 ```bash
-python H2-speechRecog.py 
+python H2-transcribe2text.py 
 
 
 Parameters:

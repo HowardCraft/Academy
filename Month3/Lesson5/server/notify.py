@@ -94,10 +94,10 @@ def send_telegram_image(file_path: str, caption: str = None):
 def send_telegram_audio(file_path: str, caption: str = None):
     token = config['telegram_bot_token']
     chat_id = config['telegram_chat_id']
-    url = f'https://api.telegram.org/bot{token}/sendPhoto'
+    url = f'https://api.telegram.org/bot{token}/sendAudio'
 
     with open(file_path, 'rb') as f:
-        files = { 'audio': (file_path, f, 'audio/mpeg') }
+        files = {'audio': (file_path, f, 'audio/mpeg') }
         data = {'chat_id': chat_id}
         if caption:
             data['caption'] = caption

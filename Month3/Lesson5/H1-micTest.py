@@ -77,11 +77,11 @@ def main():
    list_input_devices()
 
    # 6) Do the recording
-   audio_data = record_audio(args.duration, args.SAMPLERATE, args.CHANNELS)
+   audio_data = record_audio(args.duration, args.samplerate, args.channels)
 
 
    # 7) Save to WAV
-   sf.write(args.filename, audio_data, args.SAMPLERATE)
+   sf.write(args.filename, audio_data, args.samplerate)
    print(f"Saved recording to '{args.filename}'\n")
 
 
@@ -91,7 +91,7 @@ def main():
          print("Telegram action triggered.") 
    # # 9) (Optional) Send to Discord
    if args.discord_action:
-         send_discord_audio(args.filename, caption="Audio recording")
+         send_discord_audio(args.filename, meesage="Audio recording")
          print("Discord action triggered.")
 
 

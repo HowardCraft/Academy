@@ -1,3 +1,5 @@
+
+
 #!/usr/bin/env python3
 """
 transcribe_wav.py
@@ -9,6 +11,7 @@ to text using Vosk’s offline speech-to-text engine.
 import wave
 import json
 from vosk import Model, KaldiRecognizer
+from command_matcher import match_command,COMMANDS
 
 # -----------------------------------------------------------------------------
 # 1) Configuration
@@ -68,3 +71,10 @@ results.append(final_res.get("text", ""))
 transcript = " ".join(filter(None, results))
 print("\n=== Transcript ===")
 print(transcript)
+
+cmd_text = match_command(transcript, COMMANDS, cutoff=0.6)
+if cmd_text:
+    print(f"→ Matched command: '{cmd_text}'")
+    COMMANDS[cmd_text]()  # call the handler
+else:
+    print("→ Sorry, I didn't understand that command.")
