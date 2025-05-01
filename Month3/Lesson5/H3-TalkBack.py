@@ -52,6 +52,12 @@ if __name__ == "__main__":
     # Add an argument for the action to perform with the Discord webhook .
     parser.add_argument("--discord_action", type=bool, default=True,
                         help="Action to perform with Discord webhook (send_discord_audio).")
+    parser.add_argument(
+        "--filename", "-o",
+        type=str,
+        default="test.wav",
+        help="Output WAV filename"
+    )
     args = parser.parse_args()
     sample_text = "Hello, this is a test of writing speech to a file."
     synth_to_file(sample_text, "test.wav", voice="en-us", speed=150, pitch=70)
@@ -66,5 +72,5 @@ if __name__ == "__main__":
          print("Telegram action triggered.") 
     # (Optional) Send to Discord
     if args.discord_action:
-         send_discord_audio(args.filename, caption="Audio recording")
+         send_discord_audio(args.filename, message="Audio recording")
          print("Discord action triggered.")
