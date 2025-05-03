@@ -2,29 +2,33 @@
 """
 run_tinyllama.py
 
+
 A formal, argument-driven script to load and interact with the TinyLLaMA model via the llama-cpp-python bindings.
 
+
 Usage:
-    python run_tinyllama.py \  # or execute directly if chmod +x
-        --model-path PATH_TO_MODEL \  # GGUF model file
-        --prompt "Your prompt here" \  # question or conversation starter
-        [--max-tokens N] \           # maximum number of tokens to generate
-        [--temperature T] \          # randomness control
-        [--repeat-penalty R] \       # penalty for repeated tokens
-        [--context-length C]          # context window size
+   python run_tinyllama.py \  # or execute directly if chmod +x
+       --model-path PATH_TO_MODEL \  # GGUF model file
+       --prompt "Your prompt here" \  # question or conversation starter
+       [--max-tokens N] \           # maximum number of tokens to generate
+       [--temperature T] \          # randomness control
+       [--repeat-penalty R] \       # penalty for repeated tokens
+       [--context-length C]          # context window size
+
 
 Example:
-    python run_tinyllama.py \
-        --model-path tinyllama-models/tinyllama-1.1b-chat-v1.0.Q8_0.gguf \
-        --prompt "Hello, students! Share a fun fact about penguins." \
-        --max-tokens 50 \
-        --temperature 0.7 \
-        --repeat-penalty 1.1 \
-        --context-length 2048
+   python run_tinyllama.py \
+       --model-path tinyllama-models/tinyllama-1.1b-chat-v1.0.Q8_0.gguf \
+       --prompt "Hello, students! Share a fun fact about penguins." \
+       --max-tokens 50 \
+       --temperature 0.7 \
+       --repeat-penalty 1.1 \
+       --context-length 2048
 """
 import argparse
 import sys
 from llama_cpp import Llama
+
 
 def parse_args():
     parser = argparse.ArgumentParser(
@@ -56,8 +60,10 @@ def parse_args():
     )
     return parser.parse_args()
 
+
 def main():
     args = parse_args()
+
 
     # Load the TinyLLaMA model
     print(f"Loading TinyLLaMA model from: {args.model_path}")
@@ -72,20 +78,37 @@ def main():
         print(f"Error loading model: {e}", file=sys.stderr)
         sys.exit(1)
 
+
     # Generate a response
     print(f"\nPrompt: {args.prompt}\nGenerating up to {args.max_tokens} tokens...\n")
+    prompt = (
+"[INST] <<SYS>>"
+"You are a helpful assistant that answers conversationally but precisely."
+"<</SYS>>"
+
+
+"Q: What’s the tallest mountain in the world?"
+"A: Mount Everest is the tallest mountain on Earth, standing at 8,848 meters above sea level. It sits on the border of Nepal and China, and has been a major mountaineering challenge since the early 20th century. [/INST]"
+"[INST]"+
+args.prompt+
+"A:"
+)
+
     try:
         response = llm(
-            args.prompt,
+            prompt,
             max_tokens=args.max_tokens
         )
     except Exception as e:
         print(f"Error during inference: {e}", file=sys.stderr)
         sys.exit(1)
 
+
     # Output result
-    text = response.choices[0].text.strip()
+
+    text = response["choices"][0]["text"].strip()
     print(f"🤖 TinyLLaMA says:\n{text}\n")
+
 
 if __name__ == "__main__":
     main()

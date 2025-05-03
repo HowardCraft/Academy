@@ -20,7 +20,7 @@ wget https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/
 
 echo
 echo "4️⃣  Installing the Python bindings (llama-cpp-python)..."
-pip3 install --user llama-cpp-python
+pip3 install --break-system-package llama-cpp-python
 
 echo
 echo "✅  Setup complete! You can now import llama_cpp in your own Python scripts."
