@@ -15,6 +15,8 @@ You need to Download yolo11 version
 important note:
 ensure the path to dataset in data.yaml are correct:
 train: /home/pi/Downloads/Academy-main/Month3/Lesson7/train/images/
+
+
 val: /home/pi/Downloads/Academy-main/Month3/Lesson7/valid/images/
 
 
