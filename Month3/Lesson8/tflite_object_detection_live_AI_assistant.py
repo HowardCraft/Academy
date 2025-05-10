@@ -207,21 +207,13 @@ if args.Live:
                 print("Hello! How can I help you today?")
                 print("talk in 5 seconds for 10 seconds...")
                 time.sleep(5)
+                print("talk...")
                 record_audio(10, 44100, 1, "test.wav")
                 transcribe=transcribe_audio("test.wav")
                 Run_llm(transcribe)
                 file_name_detect = 'detect.jpg'
                 detected_person = cv2.imwrite(file_name_detect,image)
-
-                if args.telegram_action:
-                    print("📱 Telegram action is enabled.")
-                    send_telegram_message("hi")
-                    send_telegram_image(file_name_detect, caption="📷 person here in the room!"
-                                        if os.path.exists(detected_person) else None)
-                if args.discord_action:
-                    print("💬 Discord action is enabled.")
-                    send_discord_image(file_name_detect, message="📷person here in the room!")
-                
+                break
        else:
            print("detach the detection process")
            person_detect_start = False

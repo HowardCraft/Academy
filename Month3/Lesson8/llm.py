@@ -1,10 +1,12 @@
 import sys
 from llama_cpp import Llama
+import os
+os.environ['VOSK_LOG_LEVEL'] ='-1'
 
 def Run_llm(my_prompt):
     # Load the TinyLLaMA model
-    model_path = "llama-2-7b-chat.gguf"
-    print(f"Loading TinyLLaMA model from: {model_path}")
+    model_path = "tinyllama-1.1b-chat-v1.0.Q8_0.gguf"
+  #  print(f"Loading TinyLLaMA model from: {model_path}")
     try:
         llm = Llama(
             model_path=model_path,
