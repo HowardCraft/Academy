@@ -211,7 +211,7 @@ if args.Live:
                 input("Press Enter to start recording...")
                 time.sleep(1)
                 print("talk...")
-                record_audio(duration, 44100, 1, "test.wav")
+                record_audio(int(duration), 44100, 1, "test.wav")
                 transcribe=transcribe_audio("test.wav")
                 Run_llm(transcribe)
                 file_name_detect = 'detect.jpg'
