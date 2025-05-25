@@ -154,3 +154,4 @@ Because of this, we had to run the code outside the virtual environment to acces
 
 Even though we didn’t use the virtual environment in the final project, understanding how and why to use one is still valuable for future projects, especially those that don’t involve hardware dependencies.
 apologies for delay in reply.
+

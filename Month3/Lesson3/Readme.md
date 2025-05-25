@@ -11,22 +11,27 @@ This lesson demonstrates how to set up your Raspberry Pi for real-time object de
 ## Installation
 
 you need to install install.sh 
-
+```bash
 ./install.sh
-
+```
 ## Test Camera
 
 to test camera you need to run:
-
+```bash
 libcamera-hello
+```
 
 
 
 this line of code will bring up your camera for 5 seconds. Now Run this code to ensure PiCamera Depenceis are installed correctly
 
-'python3 piCameraTest.py'
+```bash
+python3 piCameraTest.py
+```
 
 ## Run Live Demo:
 If camera works fine you can run :
 
-'python3 tflite_object_detection_live.py'
+```bash
+python3 tflite_object_detection_live.py
+```

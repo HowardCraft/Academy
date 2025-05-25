@@ -88,7 +88,7 @@ Install requests if needed by running install.sh:
 
 For test you need to run notify.py file
 
-```
+```bash
 python3 notify.py
 
 ```
