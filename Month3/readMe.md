@@ -1,6 +1,6 @@
 FAQ:
 
-# FAQ: How to Run `.sh` Files on Raspberry Pi
+# Q: How to Run `.sh` Files on Raspberry Pi
 
 ## What is a `.sh` file?
 
