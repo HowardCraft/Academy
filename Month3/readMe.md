@@ -36,3 +36,11 @@ Replace yourscript.sh with the name of your file.
 ```bash
 ./yourscript.sh
 ```
+
+## Tips
+Make sure the file ends in .sh
+
+Always include ./ before the filename when running it
+
+Read any error messages carefully — they usually help you understand what's missing or needs fixing
+
