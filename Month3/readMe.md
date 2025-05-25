@@ -145,3 +145,12 @@ All packages will be installed only inside the virtual environment.
 ---
 
 Stay organized and safe with `venv`! 🐍🛡️
+
+
+# Q: Why start using virtual environments then not use one in lesson 4
+Initially, we introduced the virtual environment because it's a best practice for managing project dependencies and avoiding conflicts across different Python projects. However, during the project, we encountered a specific technical limitation: The Pi Camera libraries depend on system-level resources and hardware interfaces that aren't always accessible from inside a Python virtual environment. Because virtual environments are isolated, they sometimes can't see or interact with low-level system components — like the camera — which are needed for these libraries to work. That's why we had to run the project outside the venv.
+
+Because of this, we had to run the code outside the virtual environment to access the camera successfully. This is a common real-world scenario where sometimes the ideal setup (like using a virtual environment) has to be adjusted due to hardware or system constraints.
+
+Even though we didn’t use the virtual environment in the final project, understanding how and why to use one is still valuable for future projects, especially those that don’t involve hardware dependencies.
+apologies for delay in reply.
