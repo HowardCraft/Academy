@@ -2,6 +2,10 @@ FAQ:
 
 # Q: How to Run `.sh` Files on Raspberry Pi
 
+## why we have `.sh`?
+
+Installing dependenices and libreries on Raspberry Pi can be a bit challenging, so we prepare `.sh` as much as possible to reduce the struggleing users with errors while instaling the files/libreries.
+
 ## What is a `.sh` file?
 
 A `.sh` file is a **shell script** — a text file that contains a list of terminal commands. It’s often used to automate tasks like installing software or setting up your Raspberry Pi.
