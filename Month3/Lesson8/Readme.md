@@ -6,7 +6,14 @@ AI will record audio,
 will transcribe the audio to text,
 Ask the quesiion from llm agent and show the response
 
+First you need to install depencesies.
 
-First run ./InstallRequirment.sh
-just you need to run tflite_object_detection_live_AI_assistant.py
+```bash
+./InstallRequirment.sh
+```
+
+Then you need to to Run AI Assistant
+```bash
+python tflite_object_detection_live_AI_assistant.py
+```
 
