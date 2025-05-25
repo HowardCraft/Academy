@@ -3,7 +3,7 @@
 HandsOn task for lesson 2 of month 3
 Install and Run pretrained Object detection task on Raspberry Pi with [YOLO](https://github.com/ultralytics/ultralytics) and [tensorflow Lite](https://www.tensorflow.org/api_docs/python/tf/lite)
 
-
+due to file size limit please download the video here https://craftingtable.com/pages/downloads
 ## YOLO
 
 ### Install 
