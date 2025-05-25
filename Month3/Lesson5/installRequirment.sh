@@ -28,6 +28,8 @@ pip3 install --upgrade pip
 echo "Installing virtualenv..."
 sudo pip3 install --break-system-packages virtualenv
 
+sudo apt install libportaudio2 libasound-dev espeak-ng
+
 # Step 4: Create a virtual environment named 'yolo11_env'
 echo "Creating virtual environment 'vf_env'..."
 virtualenv vf_env
@@ -37,8 +39,8 @@ echo "Activating virtual environment..."
 source vf_env/bin/activate
 
 # Step 6: Install TensorFlow Lite runtime
-pip3 install sounddevice soundfile
-pip3 install vosk
+pip3 install sounddevice soundfile 
+pip3 install vosk 
 # Step 7: Deactivate the virtual environment
 echo "Deactivating virtual environment..."
 deactivate
