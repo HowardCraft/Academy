@@ -33,9 +33,9 @@ sudo apt install -y \
     libatlas-base-dev \
     python3-dev \
     python3-numpy \
-    libtbb2 \
+    libtbb12 \
     libtbb-dev \
-    libdc1394-22-dev
+    libdc1394-dev
 
 # -----------------------------------------
 # 2. Install Picamera2 for Raspberry Pi Camera Interface
