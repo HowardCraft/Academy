@@ -8,7 +8,7 @@ This repository provides two scripts to help beginner students install and inter
   3. Installs the Python bindings via `llama-cpp-python`
   4. Verifies the installation with a sample inference
 
-- **run_tinyllama.py** – A formal, argparse‑driven Python script to load the TinyLLaMA model and generate text from a user-specified prompt.
+- **run test_llama.py** – A formal, argparse‑driven Python script to load the TinyLLaMA model and generate text from a user-specified prompt.
 
 
 ## Installation & Setup
@@ -18,10 +18,10 @@ This repository provides two scripts to help beginner students install and inter
 ## Usage
 
 ###  Using the Python script
-Run `run_tinyllama.py` with your own prompt and parameters:
+Run `test_llama.py` with your own prompt and parameters:
 
 ```bash
-python3 run_tinyllama.py \
+python3 test_llama.py \
   --model-path "$HOME/tinyllama-models/tinyllama-1.1b-chat-v1.0.Q8_0.gguf" \
   --prompt "What is a fascinating fact about space?" \
   --max-tokens 60 \

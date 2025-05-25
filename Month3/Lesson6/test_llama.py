@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-run_tinyllama.py
+run_testllama.py
 
 
 A formal, argument-driven script to load and interact with the TinyLLaMA model via the llama-cpp-python bindings.
