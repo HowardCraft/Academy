@@ -153,5 +153,55 @@ Initially, we introduced the virtual environment because it's a best practice fo
 Because of this, we had to run the code outside the virtual environment to access the camera successfully. This is a common real-world scenario where sometimes the ideal setup (like using a virtual environment) has to be adjusted due to hardware or system constraints.
 
 Even though we didn’t use the virtual environment in the final project, understanding how and why to use one is still valuable for future projects, especially those that don’t involve hardware dependencies.
-apologies for delay in reply.
+
+
+
+# 🔄 How can I get the latest version of the project files?
+
+You can update the project files using **either of the following methods**:
+
+---
+
+## ✅ Option 1: Download ZIP (Simpler, but not for continuous updates)
+
+1. Go to the GitHub repository page.
+2. Click the green **"Code"** button.
+3. Select **"Download ZIP"**.
+4. Unzip the file on your computer.
+5. Replace your previous files if needed.
+
+> ❗ **Note:** This method is easy but you’ll need to repeat the process every time there's an update.
+
+---
+
+## 🧠 Option 2: Use Git (Recommended for Continuous Updates)
+
+> Requires Git to be installed. If not, download it from [https://git-scm.com](https://git-scm.com).
+
+### 📥 First-time Clone:
+```bash
+git clone https://github.com/HowardCraft/Academy.git
+```
+
+### 🔄 To Update (Pull Latest Changes):
+Go to the project directory and run:
+```bash
+git pull
+```
+
+> 📝 This fetches only the new/changed files without downloading everything again.
+
+---
+
+## ❓ What if I made changes to my own files?
+If you've edited the files and want to update, Git might show **conflicts**. You can:
+- Save your changes somewhere else.
+- Run `git pull` to get the latest.
+- Reapply your changes to the updated files.
+
+---
+
+## 💬 Still confused?
+Ask in class or on the group chat. We're here to help!
+
 
