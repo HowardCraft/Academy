@@ -164,7 +164,7 @@ You can update the project files using **either of the following methods**:
 
 ## ✅ Option 1: Download ZIP (Simpler, but not for continuous updates)
 
-1. Go to the GitHub repository page.
+1. Go to the GitHub repository page (https://github.com/HowardCraft/Academy/releases)
 2. Click the green **"Code"** button.
 3. Select **"Download ZIP"**.
 4. Unzip the file on your computer.
