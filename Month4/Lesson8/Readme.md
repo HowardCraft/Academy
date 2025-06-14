@@ -4,7 +4,7 @@
 
 
 1. Create a Long-Lived Access Token
-Open Home Assistant in your browser (e.g. http://<your-ha-host>:8123).
+Open Home Assistant in your browser (e.g. http://"http://localhost:8123).
 
 Click your user avatar (bottom of the left sidebar).
 
